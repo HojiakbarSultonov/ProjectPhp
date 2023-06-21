@@ -10,4 +10,10 @@ class PageController extends Controller
     {
         return view('main');
     }
+    public function welcome()
+    {
+        return view('welcome',['name'=>'Hojiakbar']);
+    }
+
+
 }

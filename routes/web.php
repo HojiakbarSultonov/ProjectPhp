@@ -17,6 +17,8 @@ use App\Http\Controllers\PageController;
 */
 
 Route::get('/', [PageController::class, 'main']);
+Route::get('/welcome', [PageController::class, 'welcome']);
+Route::view('salom', 'salom');
 //
 //Route::get('/users',[UserController::class, 'index']);
 //Route::get('/users/create',[UserController::class, 'create']);
