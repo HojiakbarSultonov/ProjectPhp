@@ -1,2 +1,0 @@
-<div>
-Jumbotron</div>
