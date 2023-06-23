@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
 //        $post = new Post;
@@ -21,24 +21,26 @@ class PostController extends Controller
 //
 //        $post->save();
 //        dd($post);
-            $post = Post::create([
-                'title'=>'Hello',
-                'short_content'=>'This is Short content',
-                'content'=>'This is content',
-                'photo'=>'/user.jpg'
-            ]);
+//            $post = Post::create([
+//                'title'=>'Hello',
+//                'short_content'=>'This is Short content',
+//                'content'=>'This is content',
+//                'photo'=>'/user.jpg'
+//            ]);
 
-            $post=Post::find(2)->update(['title'=>'ozgargan title']);
+//            $post=Post::find(2)->update(['title'=>'ozgargan title']);
+//
+//
+////            Post::destroy(1);
+//              Post::withTrashed()->find(1)->restore();
+//                 $post = Post::all();
+//            dd($post);
+//$posts = DB::table('posts')->get()->pluck('title');
+//        dd($posts);
+//            return 'success';
 
-
-//            Post::destroy(1);
-              Post::withTrashed()->find(1)->restore();
-                 $post = Post::all();
-            dd($post);
-            return 'success';
-
-
-//        return view('posts.index');
+        $posts = Post::all();
+       return view('posts.index')->with('posts', $posts);
 
     }
 
@@ -61,14 +63,16 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        //
+
+        return view('posts.show')->with([
+            'post'=> $post,
+            'recent_posts'=>Post::latest()->get()->except($post->id)->take(5)
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         //
