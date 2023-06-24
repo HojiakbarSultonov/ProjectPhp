@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,10 +35,10 @@ class PostController extends Controller
 ////            Post::destroy(1);
 //              Post::withTrashed()->find(1)->restore();
 //                 $post = Post::all();
-//            dd($post);
-//$posts = DB::table('posts')->get()->pluck('title');
-//        dd($posts);
-//            return 'success';
+//               dd($post);
+//                  $posts = DB::table('posts')->get()->pluck('title');
+//                   dd($posts);
+//                  return 'success';
 
         $posts = Post::all();
        return view('posts.index')->with('posts', $posts);
@@ -49,15 +50,20 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function store(StorePostRequest $request)
     {
-        //
+
+
+        $post = Post::create([
+            'title'=>$request->title,
+            'short_content'=>$request->short_content,
+            'content'=>$request->content,
+        ]);
+        return redirect()->route('posts.index');
     }
 
     /**

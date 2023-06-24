@@ -4,8 +4,6 @@
         Blog
     </x-slot:title>
 
-
-
     <x-pageHeader>
         Blog
     </x-pageHeader>
@@ -37,6 +35,7 @@
                     </div>
                     <h5 class="font-weight-medium mb-2">{{$post ->title}}</h5>
                     <p class="mb-4">{{$post ->short_content}}</p>
+                    <p class="mb-4">{{$post ->content}}</p>
                     <a class="btn btn-sm btn-primary py-2" href="{{route('posts.show', ['post' =>$post->id])}}">O'qish</a>
                 </div>
 
