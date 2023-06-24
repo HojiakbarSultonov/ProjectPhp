@@ -26,12 +26,19 @@
 {{--                                </ul>--}}
 {{--                            </div>--}}
 {{--                        @endif--}}
-                        <form  action="{{route('posts.store')}}" method="POST">
+                        <form  action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                                 <div class="control-group mb-4">
                                     <input type="text" class="form-control p-4" name="title" value="{{old('title')}}" id="name" placeholder="Title"  />
                                     @error('title')
                                     <p class="help-block text-danger">  {{ $message }}</p>
+                                    @enderror
+
+                                </div>
+                                <div class="control-group mb-4 ">
+                                    <input type="file" class="form-control  p-4" name="photo" value="{{old('title')}}" id="name" placeholder="Title"  />
+                                    @error('photo')
+                                         <p class="help-block text-danger">  {{ $message }}</p>
                                     @enderror
 
                                 </div>

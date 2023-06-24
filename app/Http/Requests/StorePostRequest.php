@@ -12,6 +12,7 @@ class StorePostRequest extends FormRequest
             'title' => 'Sarlavha',
             'short_content' => 'Qisqacha',
             'content' => 'Maqola',
+
         ];
     }
     public function authorize(): bool
@@ -29,7 +30,8 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'short_content' => 'required',
-            'content' => 'required',``
+            'content' => 'required',
+
         ];
     }
 }
