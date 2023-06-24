@@ -15,6 +15,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+                    <div class="d-flex justify-content-end ">
+                        <a class="btn btn-sm btn-outline-secondary mr-2" href="{{route('posts.edit', ['post'=>$post->id])}}">Edit</a>
+                        <form action="{{route('posts.destroy', ['post'=>$post->id])}}" method="POST"
+                        onsubmit="return confirm('Rostdan ham o\'chirmoqchimisiz?')">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                        </form>
+                    </div>
                     <div class="mb-5">
                         <div class="d-flex mb-2">
                             <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
